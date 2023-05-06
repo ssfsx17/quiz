@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>What type of partnership do you have?</title>
+<script>
+
+const partnerships = [
+    "Itoh Respect Army",
+    "121000000",
+    "Wolf and Pride",
+    "Bakuretsu Sisters",
+    "Free WiFi",
+    "Daisy Monkey",
+    "Magical Sugar Rabbits",
+    "Daydream",
+    "Kyoraku Kyomei",
+    "Love Triangle",
+    "Neo-Biishikigun",
+    "Toyo Mates",
+    "CDK",
+    "Baka Gaijin",
+    "ShunMAO"
+];
+
+const questions = [
+    {
+        questionText: "How did you hook up with your partner?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "I demanded she respect me"
+            },
+            {
+                target: "121000000",
+                text: "We decided it was us against the world"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "She invited me to an event that was important to her"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "Family"
+            },
+            {
+                target: "Free WiFi",
+                text: "We got rough with each other, and one thing led to another"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "I patted her on the head and called her \"puppy\""
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "I was getting away from my ex and discovered I had more in common with my partner"
+            },
+            {
+                target: "Daydream",
+                text: "She was on the rebound from an undead ex"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "We had an epic heroic showdown and realized we could be partners"
+            },
+            {
+                target: "Love Triangle",
+                text: "A variety of connections escalated into a polycule"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "I was playing music, and she came to me"
+            },
+            {
+                target: "Toyo Mates",
+                text: "We went to school together"
+            },
+            {
+                target: "CDK",
+                text: "Drinking buddies"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "We both love doing stupid stunts"
+            },
+            {
+                target: "ShunMAO",
+                text: "At the sauna"
+            }
+        ]
+    },
+    {
+        questionText: "What do you eat for a date with your partner?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "Steal food from your partner"
+            },
+            {
+                target: "121000000",
+                text: "Bento. Strictly business."
+            },
+            {
+                target: "Wolf and Pride",
+                text: "Whatever that I would want to see my partner eating"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "White rice with a side of fried rice, and a dessert of rice mochi"
+            },
+            {
+                target: "Free WiFi",
+                text: "Blood stew"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "Egg Slut Sandwich"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "Hamburgers"
+            },
+            {
+                target: "Daydream",
+                text: "The last thing I saw my favorite idol post on social media"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "Rare meat and protein shake"
+            },
+            {
+                target: "Love Triangle",
+                text: "Tofu and soybean sprouts in spicy soup"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "The most expensive thing at a Michelin-Three-Stars restaurant"
+            },
+            {
+                target: "Toyo Mates",
+                text: "Whatever my partner got"
+            },
+            {
+                target: "CDK",
+                text: "Snacks at the bar, in preparation for beer"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "The most fucked-up and infamous thing that my partner dares me to try"
+            },
+            {
+                target: "ShunMAO",
+                text: "Street food"
+            }
+        ]
+    },
+    {
+        questionText: "How do you help your partner with school grades?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "Do nothing to help. This is my chance to surpass her"
+            },
+            {
+                target: "121000000",
+                text: "Shout at her to do better, headbutt her if necessary"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "Tutor her, as I've been through it all before"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "Reassure her that she won't need good grades for working on the farm"
+            },
+            {
+                target: "Free WiFi",
+                text: "Put on some music that we like, so she can study"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "Physically relieve her tension and pat her on the head"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "Get hamburgers delivered so we can study together"
+            },
+            {
+                target: "Daydream",
+                text: "Physically pick her up and take her to the library"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "Tell her that she needs to rise to the occasion to prove that she is a hero"
+            },
+            {
+                target: "Love Triangle",
+                text: "Encourage her to take more naps with me so she will be well-rested"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "Bribe the teachers"
+            },
+            {
+                target: "Toyo Mates",
+                text: "Didn't we already graduate from the same school?"
+            },
+            {
+                target: "CDK",
+                text: "Tell her that partying is cooler than school anyways"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "Grapple with her to work the stress off"
+            },
+            {
+                target: "ShunMAO",
+                text: "Take a trip to museums where the information is more physically-tangible"
+            }
+        ]
+    },
+    {
+        questionText: "What's your cute nickname for your partner?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "I am cuter than my partner so I don't care"
+            },
+            {
+                target: "121000000",
+                text: "\"Name\"-chan"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "Daughter"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "Sis"
+            },
+            {
+                target: "Free WiFi",
+                text: "Vomiting Debutaro"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "Zoomie"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "\"Name\"-chi"
+            },
+            {
+                target: "Daydream",
+                text: "We don't have cute nicknames, we just grab each other"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "Sidekick"
+            },
+            {
+                target: "Love Triangle",
+                text: "Wife"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "Servant"
+            },
+            {
+                target: "Toyo Mates",
+                text: "Mate"
+            },
+            {
+                target: "CDK",
+                text: "King"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "Dumbass"
+            },
+            {
+                target: "ShunMao",
+                text: "A name that my partner's enemy came up with"
+            }
+        ]
+    },
+    {
+        questionText: "What do you watch with your partner on lazy days?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "Idol music videos, for training"
+            },
+            {
+                target: "121000000",
+                text: "Buddy cop movies"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "Past matches, so we can get better"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "Slayers & random cooking videos"
+            },
+            {
+                target: "Free WiFi",
+                text: "Violent and gory movies"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "Sailor Moon & various Mario and Sonic shows"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "Disney movies"
+            },
+            {
+                target: "Daydream",
+                text: "Physical training videos, for proper form and especially butt workouts"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "A big marathon of tokusatsu shows & Godzilla films"
+            },
+            {
+                target: "Love Triangle",
+                text: "Shinkalion, children's lullabies, and Star Guitar by the Chemical Brothers"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "Classical music"
+            },
+            {
+                target: "Toyo Mates",
+                text: "Whatever my partner tells me to watch"
+            },
+            {
+                target: "CDK",
+                text: "How to mix drinks, also tutorials on complicated submission holds"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "Music videos from dead post-punk bands & black-and-white B-movies"
+            },
+            {
+                target: "ShunMAO",
+                text: "Jackass, destructive science videos, and travelogues of cool street hangouts"
+            }
+        ]
+    },
+    {
+        questionText: "What's a good day trip with your partner?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "The recording studio"
+            },
+            {
+                target: "121000000",
+                text: "Wherever we are mandated to by our partnership contract"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "We're too busy for day trips"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "Visit to the parents place, then an anime/manga themed exhibit afterwards"
+            },
+            {
+                target: "Free WiFi",
+                text: "Systematically use every single photo booth in a mall, while singing together with the radio"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "1990's-style fashion stores, then our friend's theater production afterwards"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "The newest theme park"
+            },
+            {
+                target: "Daydream",
+                text: "The gym"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "Bike riding together"
+            },
+            {
+                target: "Love Triangle",
+                text: "Train tour through the countryside, then Harajuku at night"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "My summer estate near the Versailles"
+            },
+            {
+                target: "Toyo Mates",
+                text: "I let my partner do all the planning"
+            },
+            {
+                target: "CDK",
+                text: "Ichigaya chocolate places"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "Bar-hopping, see which places would be good to wrestle in"
+            },
+            {
+                target: "ShunMAO",
+                text: "Popular tourist spots, to see if there are bad guys we can collect the bounty on"
+            }
+        ]
+    },
+    {
+        questionText: "What's a cute gift for your partner?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "My partner should be giving me the gifts"
+            },
+            {
+                target: "121000000",
+                text: "Absolutely nothing. The best gift is victory"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "Show up to her workplace and hug her in front of her coworkers"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "Mochi and sushi that I made myself"
+            },
+            {
+                target: "Free WiFi",
+                text: "Fire extinguisher"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "Light-up shoes and a matching tamagotchi"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "An extremely sweet dessert"
+            },
+            {
+                target: "Daydream",
+                text: "My artistic drawing of my partner"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "Kaiju figurine"
+            },
+            {
+                target: "Love Triangle",
+                text: "A fancy pillow, and cute pieces from my own clothing"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "All the shiny material possessions of whoever my partner hates"
+            },
+            {
+                target: "Toyo Mates",
+                text: "University alumni gear"
+            },
+            {
+                target: "CDK",
+                text: "A flask of expensive liquor"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "A gnarly t-shirt design of my partner"
+            },
+            {
+                target: "ShunMAO",
+                text: "A big box of legos"
+            }
+        ]
+    },
+    {
+        questionText: "What's the most dramatic thing to happen to your partnership?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "She hooked up with someone else"
+            },
+            {
+                target: "121000000",
+                text: "We knocked each other out, and then took on another big challenge right afterwards"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "We danced together at a special event, with fancy matching dresses"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "Deciding who would stay in the city and who would go to the farm"
+            },
+            {
+                target: "Free WiFi",
+                text: "We bled in public together"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "She tried to get on top of me, so I put her back on bottom"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "I spun around on top of her"
+            },
+            {
+                target: "Daydream",
+                text: "We had a violent fight and smashed each other around the place"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "We had a wild new year party with everyone invited"
+            },
+            {
+                target: "Love Triangle",
+                text: "We had the whole polycule together in one place"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "We were able to display our full wealth and estate in one place"
+            },
+            {
+                target: "Toyo Mates",
+                text: "We finally got in-sync enough to do some cool things"
+            },
+            {
+                target: "CDK",
+                text: "We had to completely remodel our home. This was after smashing enemies through the ceiling, hosing down enemies, stuffing goblins into the cabinet under the sink, and other incidents."
+            },
+            {
+                target: "Baka Gaijin",
+                text: "Sticking metal objects and firecrackers into each other for fun"
+            },
+            {
+                target: "ShunMAO",
+                text: "We finally got an award for our partnership"
+            }
+        ]
+    },
+    {
+        questionText: "What is your partnership famous for?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "The fact that we broke up dramatically"
+            },
+            {
+                target: "121000000",
+                text: "Our individual accomplishments are great, but we have a hard time making things happen together"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "How similar, yet different, our life histories are"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "We are blood related"
+            },
+            {
+                target: "Free WiFi",
+                text: "How dangerous we are, both to each other and to our enemies"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "How unsubtle we are about our partnership"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "How dominant and durable our partnership has been"
+            },
+            {
+                target: "Daydream",
+                text: "How crazed and frightening we are, each in our own special way"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "How otaku we are"
+            },
+            {
+                target: "Love Triangle",
+                text: "The fact that we are a polycule"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "There is no match for our nobility and grace"
+            },
+            {
+                target: "Toyo Mates",
+                text: "We were schoolmates"
+            },
+            {
+                target: "CDK",
+                text: "We've had two pairs of tag belts at the same time"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "The stupidly grand things we have schemed together"
+            },
+            {
+                target: "ShunMAO",
+                text: "We are both empty-headed yet somehow do great things"
+            }
+        ]
+    },
+    {
+        questionText: "What's your signature partnership actions?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "It was a whole entrance song that we shared, back when we were together"
+            },
+            {
+                target: "121000000",
+                text: "Back-to-back, fighting for our lives"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "We performed a whole song on stage together"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "Demolition techniques from classic partnerships of the past"
+            },
+            {
+                target: "Free WiFi",
+                text: "We gang up on someone to eat their hair"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "Holding hands, interlocking fingers, while gazing longingly into each other"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "Things named after our favorite Disney movies"
+            },
+            {
+                target: "Daydream",
+                text: "Throwing each other around into our enemies"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "Weapons inspired by TV and movies"
+            },
+            {
+                target: "Love Triangle",
+                text: "Running a train on someone, laying on top of them and sleeping together"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "Plating the remains of our enemies, with rose garnish"
+            },
+            {
+                target: "Toyo Mates",
+                text: "Making the symbol from our alma mater"
+            },
+            {
+                target: "CDK",
+                text: "A rude English gesture"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "Making a fork board that says \"FUCK YOU\""
+            },
+            {
+                target: "ShunMAO",
+                text: "\"Neppower!\""
+            }
+        ]
+    },
+    {
+        questionText: "How close are you with your partner?",
+        answers: [
+            {
+                target: "Itoh Respect Army",
+                text: "We're not together anymore"
+            },
+            {
+                target: "121000000",
+                text: "Close enough to heel-kick to the head headbutt"
+            },
+            {
+                target: "Wolf and Pride",
+                text: "Close enough to axe-kick on the head and headbutt"
+            },
+            {
+                target: "Bakuretsu Sisters",
+                text: "141 & 2/3 percent united in purpose"
+            },
+            {
+                target: "Free WiFi",
+                text: "Close enough to smack upside the head and smell the blood of"
+            },
+            {
+                target: "Daisy Monkey",
+                text: "Constantly holding hands"
+            },
+            {
+                target: "Magical Sugar Rabbits",
+                text: "Somewhere between hand-holding and literally carrying each other"
+            },
+            {
+                target: "Daydream",
+                text: "Butt buddies"
+            },
+            {
+                target: "Kyoraku Kyomei",
+                text: "Two riders on one bike, whenever possible"
+            },
+            {
+                target: "Love Triangle",
+                text: "However close is necessarily to sleep together with only one pillow"
+            },
+            {
+                target: "Neo-Biishikigun",
+                text: "Within my grand domain, which is sufficiently close for any purpose"
+            },
+            {
+                target: "Toyo Mates",
+                text: "Not close, in fact we constantly have to apologize for each other"
+            },
+            {
+                target: "CDK",
+                text: "We're both drinking buddies and successful partners, what else can one ask for?"
+            },
+            {
+                target: "Baka Gaijin",
+                text: "Close enough to stick skewers and spikes into"
+            },
+            {
+                target: "ShunMAO",
+                text: "We regularly see each other in our undies in the sauna"
+            }
+        ]
+    }
+];
+
+function questionHtml(question) {
+    var questionName = question.questionText.toLowerCase()
+    questionName = questionName.replace(/\s+/g, '');
+    questionName = questionName.replace("?", '');
+    questionName = questionName.replace("'", '');
+    var html = "<div id=\"question\">";
+    html += "<p><b>" + question.questionText + "</b>"
+    for (var i = 0, x = question.answers.length; i < x; i++) {
+        var answer = question.answers[i];
+        var answerId = questionName + i;
+        html += "<br />";
+        html += "<input type=\"radio\" name=\"" + questionName + "\" id=\"" + answerId + "\" value=\"" + answer.target + "\"/>";
+        html += "<label for=\"" + answerId + "\">" + answer.text + "</label>";
+    }
+    html += "</p></div>";
+    return html;
+}
+
+function questionsHtml(questions) {
+    var html = "";
+    for (var i = 0, x = questions.length; i < x; i++) {
+        var question = questions[i];
+        html += questionHtml(question);
+    }
+    html += "<button type=\"button\" id=\"quizSubmit\">What's My Partnership?</button>"
+    return html;
+}
+</script>
+</head>
+<body>
+<h1>What type of partnership do you have?</h1>
+<div id="quizDiv">
+<form id="quizForm">
+    <p>test</p>
+</form>
+</div>
+<div id="resultsDiv">
+</div>
+<script>
+document.getElementById("quizForm").innerHTML = questionsHtml(questions);
+
+const quizButton = document.getElementById("quizSubmit");
+quizButton.onclick = function quizSubmitted() {
+    const formElement = document.getElementById("quizForm");
+    const formData = new FormData(formElement);
+    const formDataObject = {};
+    const countObject = {};
+    var html = "";
+
+    formData.forEach((value, key) => {
+        formDataObject[key] = value;
+    });
+
+    partnerships.forEach((value) => {
+        countObject[value] = 0;
+    });
+
+    Object.keys(formDataObject).forEach((key) => {
+        var value = formDataObject[key];
+        countObject[value] += 1;
+    });
+
+    var maxKey = "None";
+    var maxValue = 0;
+    Object.keys(countObject).forEach((key) => {
+        var value = countObject[key];
+        if (value > maxValue) {
+            maxValue = value;
+            maxKey = key;
+        }
+    });
+
+    console.log(countObject);
+    console.log("maxKey = " + maxKey);
+    console.log("maxValue = " + maxValue);
+
+    html = "<h2>Your partnership is: " + maxKey + "</h2>";
+
+    document.getElementById("resultsDiv").innerHTML = html;
+};
+</script>
+</body>
+</html>
